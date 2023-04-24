@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/stylesheet/style.css') }}">
+    <link rel="stylesheet" hhref="{{ url_for('static', filename='/stylesheet/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel = "script" href="{{ url_for('static', filename='static/script/services.html') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"rel="stylesheet"/>
+    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>E-Connect</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f5f5f5;
+		}
+
+		.container1 {
+			margin: 50px auto;
+			padding: 20px;
+			width: 800px;
+			background-color: #fff;
+			border-radius: 5px;
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 30px;
+		}
+
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #4CAF50;
+			color: white;
+			font-weight: bold;
+		}
+
+		tr:hover {
+			background-color: #f5f5f5;
+		}
+
+		.filter {
+			margin-bottom: 20px;
+		}
+
+		.filter label {
+			font-weight: bold;
+		}
+
+		.filter select {
+			padding: 10px;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			margin-left: 10px;
+		}
+
+		.btn {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+		.btn:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top h-color" style="height:80px;">
+        <div class="container">
+          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">E-Connect</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="video__icon nav-item">
+                   <a href="/live_maps"><div class="circle--outer"></div></a>
+                   <a href="/live_maps"><div class="circle--inner"></div></a> 
+                   <a href="/live_maps"> <p style="font-size: 15px;font-weight:bolder;">LIVE</p></a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="/" style="color:white;font-size:20px; padding:20px">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/about" style="color:white;font-size:20px; padding:20px">About</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/services" style="color:white;font-size:20px;padding:20px">Services</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="/updatedb" style="color:white;font-size:20px;padding:20px">Calamity Form</a>
+              </li>
+
+			  <li class="nav-item">
+				<a class="nav-link" href="/showcalamity" style="color:white;font-size:20px;padding:20px">Show calamity</a>
+			  </li>
+
+              
+
+              <li class="nav-item">
+                <a class="nav-link" href="/contact" style="color:white;font-size:20px;padding:20px">Contact</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/login" style="position:relative; top:15px"><i class="fas fa-user-plus fa-3x " style="color:rgb(255, 255, 255);"></i></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+	<div class="container1" style="position: relative; top:100px">
+		<h1>Registered Candidates</h1>
+		
+		<table>
+				<tr>
+					<th>Name</th>
+					<th>Address</th>
+					<th>Contact Number</th>
+					<th>Weather Calamity</th>
+				</tr>
+
+                
+			{% for x in person %}
+                <tr >
+                    <th style="background-color: aliceblue; color:black">{{x[0]}}</th>
+                    <th style="background-color: aliceblue; color:black">{{x[1]}}</th>
+                    <th style="background-color: aliceblue; color:black">{{x[2]}}</th>
+                    <th style="background-color: aliceblue; color:black">{{x[3]}}</th>
+                </tr>
+            {% endfor %}
+		</table>
+        
+	</div>
+</body>
+</html>

@@ -69,5 +69,41 @@ def contact():
 def live_maps():
     return render_template('live_maps.html')
 
+
+
+@app.route('/showcalamity', methods = ['POST', 'GET'])
+def showcalamity():
+    person = fetchdetails()
+    return render_template('showcalamity.html', person = person)
+
+
+
+@app.route('/updatedb', methods = ['POST', 'GET'])
+def updatedb():
+    if request.method =='POST':
+        name = request.form['name']
+        address = request.form['address']
+        contact = request.form['contact']
+        calamity = request.form['calamity']
+        sql_query = "INSERT INTO calamity (name, address, contact_no, calamity) VALUES (%s, %s, %s, %s)"
+        values = (name, address, contact, calamity)
+        cur = db.connection.cursor()
+        cur.execute(sql_query, values)
+        db.connection.commit()
+        return render_template('updatedb.html')
+    return render_template('updatedb.html')
+
+
+
+def fetchdetails():
+    cur = db.connection.cursor()
+    abc = "select * from calamity"
+    rr = cur.execute(abc)
+    detail = cur.fetchall()
+    cur.close()
+    print(detail)
+    return detail
+
+
 if __name__ == '__main__':
     app.run(debug=True)

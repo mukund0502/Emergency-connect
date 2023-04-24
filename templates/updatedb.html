@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/stylesheet/style.css') }}">
+    <link rel="stylesheet" hhref="{{ url_for('static', filename='/stylesheet/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    <link rel = "script" href="{{ url_for('static', filename='static/script/services.html') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"rel="stylesheet"/>
+    <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>E-Connect</title>
+    <title>Weather Calamity Form</title>
+	<style>
+		form {
+			margin: 50px auto;
+			padding: 20px;
+			width: 500px;
+			background-color: #f5f5f5;
+			border-radius: 5px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+		}
+
+		input[type="text"], input[type="tel"] {
+			padding: 10px;
+			width: 100%;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		select {
+			padding: 10px;
+			width: 100%;
+			border-radius: 3px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+
+		input[type="submit"]:hover {
+			background-color: #45a049;
+		}
+
+		.error {
+			color: red;
+			font-weight: bold;
+			margin-bottom: 10px;
+		}
+	</style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top h-color" style="height:80px;">
+        <div class="container">
+          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">E-Connect</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto">
+              <li class="video__icon nav-item">
+                   <a href="/live_maps"><div class="circle--outer"></div></a>
+                   <a href="/live_maps"><div class="circle--inner"></div></a> 
+                   <a href="/live_maps"> <p style="font-size: 15px;font-weight:bolder;">LIVE</p></a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="/" style="color:white;font-size:20px; padding:20px">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link " href="/about" style="color:white;font-size:20px; padding:20px">About</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="/services" style="color:white;font-size:20px;padding:20px">Services</a>
+              </li>
+              
+             
+			  <li class="nav-item">
+                <a class="nav-link" href="/updatedb" style="color:white;font-size:20px;padding:20px">Calamity Form</a>
+              </li>
+			  
+			  <li class="nav-item">
+				<a class="nav-link" href="/showcalamity" style="color:white;font-size:20px;padding:20px">Show calamity</a>
+			  </li>
+
+              
+
+              <li class="nav-item">
+                <a class="nav-link" href="/contact" style="color:white;font-size:20px;padding:20px">Contact</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/login" style="position:relative; top:15px"><i class="fas fa-user-plus fa-3x " style="color:rgb(255, 255, 255);"></i></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+	<form method="POST" action="{{ url_for('updatedb') }}" style="position: relative; top:100px">
+		<h1>Weather Calamity Form</h1>
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name" required>
+		
+		<label for="address">Address</label>
+		<input type="text" id="address" name="address" required>
+		
+		<label for="contact">Contact Number</label>
+		<input type="tel" id="contact" name="contact" pattern="[0-9]{10}" required>
+		
+		<label for="calamity">Weather Calamity</label>
+		<select id="calamity" name="calamity" required>
+			<option value="">-- Select a Calamity --</option>
+			<option value="Flood">Flood</option>
+			<option value="Cyclone">Cyclone</option>
+			<option value="Drought">Drought</option>
+			<option value="Heat Wave">Heat Wave</option>
+		</select>
+
+		<input type="submit" value="Submit">
+	</form>
+</body>
+</html>
