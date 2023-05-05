@@ -158,11 +158,11 @@ border-radius: 15px;
 /*added extra ends*/
 
 .formBx{
-position:absolute;
-top:0;
-left:0;
+position:relative;
+top:-150px;
+left: -100px;;
 width:50%;
-height:100%;
+height: 700px;;
 background:#fff;
 z-index: 1000;
 display: flex;

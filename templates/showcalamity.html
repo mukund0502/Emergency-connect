@@ -14,7 +14,7 @@
     <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>E-Connect</title>
+    <title>Emergency-Connect</title>
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -89,7 +89,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top h-color" style="height:80px;">
         <div class="container">
-          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">E-Connect</a>
+          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">Emergency-Connect</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -126,6 +126,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="/contact" style="color:white;font-size:20px;padding:20px">Contact</a>
               </li>
+			
 
               <li class="nav-item">
                 <a href="/login" style="position:relative; top:15px"><i class="fas fa-user-plus fa-3x " style="color:rgb(255, 255, 255);"></i></a>
@@ -146,6 +147,7 @@
 					<th>Address</th>
 					<th>Contact Number</th>
 					<th>Weather Calamity</th>
+					<th>Action</th>
 				</tr>
 
                 
@@ -155,6 +157,10 @@
                     <th style="background-color: aliceblue; color:black">{{x[1]}}</th>
                     <th style="background-color: aliceblue; color:black">{{x[2]}}</th>
                     <th style="background-color: aliceblue; color:black">{{x[3]}}</th>
+					
+                    <th style="background-color: aliceblue; color:black"><button type="button"><a href="delete/{{x[2]}}">Solved</a></button>
+                    </th>
+					
                 </tr>
             {% endfor %}
 		</table>

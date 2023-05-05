@@ -30,32 +30,34 @@ def login():
         email = request.form.get('email')
         fname = request.form.get('fname')
         lname = request.form.get('lname')
-        uname = request.form.get('uname')
         phone = request.form.get('phone')
         password1 = request.form.get('password1')
-        password2 = request.form.get('password2')
-        
-        if(email=='' or fname=='' or lname =='' or uname =='' or len(password1)<8):
-            info = "*every space is required and password length should greater than 7."
-            return render_template('signup.html', info = info)
-        elif(password1!=password2):
-            info = "*password doesn't match!"
-            return render_template('signup.html', info = info)
+        aadhar = request.form.get('aadhar')
+        pan = request.form.get('pan')
+        address = request.form.get('address')
         
         cur = db.connection.cursor()
-        ret = cur.execute("select * from user where email=%s or uname = %s", (email, uname))
-        if(ret>0):
-            info = "*Account already exist!"
-            return render_template('signup.html', info = info)
-
-
-        cur = db.connection.cursor()
-        # print(uname, fname, lname, email, password1)
-        cur.execute("INSERT INTO USER values (%s, %s, %s, %s, %s)", (uname, fname, lname, email, password1))
+        cur.execute("insert into adminn values(%s,%s,%s, %s, %s, %s, %s, %s )", (fname, lname, phone, email, aadhar, pan, password1, address))
+        # cur.execute("INSERT INTO USER values (%s, %s, %s, %s, %s)", (uname, fname, lname, email, password1))
         db.connection.commit()
 
-        return redirect(url_for('/login', uname = uname))
+        return redirect(url_for('home'))
     return render_template('login.html')
+
+
+@app.route('/delete/<int:id>')
+def delete(id):
+    sql_query = "delete from calamity where contact_no = %s"
+    print(id)
+    values = (str(id))
+    print(type(values))
+    cur = db.connection.cursor()
+    cur.execute(sql_query, [values])
+    print(sql_query, values)
+    db.connection.commit()
+    # return render_template('showcalamity.html')
+    return redirect(url_for('showcalamity'))
+
 
 @app.route('/about', methods = ['POST', 'GET'])
 def about():
@@ -90,6 +92,8 @@ def updatedb():
         cur = db.connection.cursor()
         cur.execute(sql_query, values)
         db.connection.commit()
+        # sendmail()
+        print('done')
         return render_template('updatedb.html')
     return render_template('updatedb.html')
 
@@ -101,8 +105,17 @@ def fetchdetails():
     rr = cur.execute(abc)
     detail = cur.fetchall()
     cur.close()
-    print(detail)
+    # print(detail)
     return detail
+
+def sendmail(name, contactno, address, calamity):
+    import smtplib
+    server = smtplib.SMTP('smtp.googlemail.com', 587)
+    server.starttls()
+    server.login('rajeevranjanjop@gmail.com', 'FirstJobapply@17')
+    body = name+" "+contactno+" " +address+" "+calamity+"."
+    server.sendmail('rajeevranjanjop@gmail.com', 'mukundwh8@gmail.com', body)
+    print('sent')
 
 
 if __name__ == '__main__':

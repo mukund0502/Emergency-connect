@@ -14,8 +14,8 @@
     <script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-    <title>E-Connect</title>
-    <title>Weather Calamity Form</title>
+    <title>Emergency-Connect</title>
+    <title>Calamity Form</title>
 	<style>
 		form {
 			margin: 50px auto;
@@ -73,7 +73,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-light fixed-top h-color" style="height:80px;">
         <div class="container">
-          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">E-Connect</a>
+          <a class="navbar-brand" href="#" style="color:white; font-size:30px;font-weight:bold;font-family:Roboto;position:absolute;left:20px;">Emergency-Connect</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -101,7 +101,7 @@
 			  <li class="nav-item">
                 <a class="nav-link" href="/updatedb" style="color:white;font-size:20px;padding:20px">Calamity Form</a>
               </li>
-			  
+
 			  <li class="nav-item">
 				<a class="nav-link" href="/showcalamity" style="color:white;font-size:20px;padding:20px">Show calamity</a>
 			  </li>
@@ -122,8 +122,8 @@
       </nav>
 
 
-	<form method="POST" action="{{ url_for('updatedb') }}" style="position: relative; top:100px">
-		<h1>Weather Calamity Form</h1>
+	<form method="POST" action="{{ url_for('showcalamity') }}" style="position: relative; top:100px">
+		<h1 >Calamity Form</h1>
 		<label for="name">Name</label>
 		<input type="text" id="name" name="name" required>
 		
